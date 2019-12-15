@@ -1,16 +1,18 @@
 package guru.springframework.controllers;
 
-import guru.springframework.services.IHelloService;
+import guru.springframework.services.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class ConstructorInjectionController {
-    private IHelloService iHelloService;
+    private IGreetingService iHelloService;
 
     @Autowired
-    public ConstructorInjectionController(IHelloService iHelloService) {
-        this.iHelloService = iHelloService;
+    // Without qualifier it will receive primary injection
+    public ConstructorInjectionController(@Qualifier("greetingService") IGreetingService greetingService) {
+        this.iHelloService = greetingService;
     }
 
     public String sayHello() {

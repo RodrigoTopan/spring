@@ -1,10 +1,12 @@
 package guru.springframework.services;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 @Service
-public class HelloService implements IHelloService {
-    public static final String HELLO = "Hello Dependency Injection";
+@Primary
+public class HelloService implements IGreetingService {
+    public static final String HELLO = "Hello - Primary Dependency Injection";
 
     @Override
     public String sayHello() {
